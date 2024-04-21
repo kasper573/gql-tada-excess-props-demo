@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "allowJs": true,
+    "strict": true,
+    "target": "ESNext",
+    "esModuleInterop": false,
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "types": ["vite/client"],
+    "plugins": [
+      {
+        "name": "@0no-co/graphqlsp",
+        "schema": "./src/server/schema.graphql",
+        "tadaOutputLocation": "./src/client/schema.generated.d.ts"
+      }
+    ],
+    "noEmit": true
+  },
+  "exclude": ["node_modules"]
+}
