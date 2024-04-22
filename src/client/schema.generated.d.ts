@@ -14,7 +14,9 @@ export type introspection = {
     "queryType": {
       "name": "Query"
     },
-    "mutationType": null,
+    "mutationType": {
+      "name": "Mutation"
+    },
     "subscriptionType": null,
     "types": [
       {
@@ -36,6 +38,66 @@ export type introspection = {
       {
         "kind": "SCALAR",
         "name": "String"
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "Input",
+        "inputFields": [
+          {
+            "name": "foo",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "bar",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Int"
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Mutation",
+        "fields": [
+          {
+            "name": "send",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "Input",
+                    "ofType": null
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "interfaces": []
       },
       {
         "kind": "SCALAR",

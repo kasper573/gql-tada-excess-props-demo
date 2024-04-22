@@ -1,3 +1,12 @@
 type Query {
   hello: String
 }
+
+input Input {
+  foo: String!
+  bar: Int!
+}
+
+type Mutation {
+  send(input: Input!): Boolean
+}

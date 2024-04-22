@@ -1,24 +1,38 @@
-import { gql, useQuery } from 'urql';
+import { graphql, useMutation, useQuery } from "./client";
 
 export function App() {
-  const [result] = useQuery({
-    query: helloGQL,
-    requestPolicy: 'cache-and-network',
-  });
+  const [mutationResult, sendStuff] = useMutation(mutateGQL);
 
-  const { data, fetching, error } = result;
+  const exactInput = { foo: "hello", bar: 123 };
+
+  const excessInput = { foo: "hello", bar: 123, excess: "excess" };
 
   return (
     <div>
-      {fetching && <p>Loading...</p>}
-      {error && <p>Oh no... {error.message}</p>}
-      <pre>{JSON.stringify({ data }, null, 2)}</pre>
+      <pre>
+        {JSON.stringify(
+          {
+            fetching: mutationResult.fetching,
+            data: mutationResult.data,
+            error: mutationResult.error,
+          },
+          null,
+          2
+        )}
+      </pre>
+      <button onClick={() => sendStuff({ input: exactInput })}>
+        Send input to graphql server (with exact input)
+      </button>
+      <br />
+      <button onClick={() => sendStuff({ input: excessInput })}>
+        Send input to graphql server (with excess props on input)
+      </button>
     </div>
   );
 }
 
-const helloGQL = gql`
-  query Hello {
-    hello
+const mutateGQL = graphql(`
+  mutation Mutate($input: Input!) {
+    send(input: $input)
   }
-`;
+`);
