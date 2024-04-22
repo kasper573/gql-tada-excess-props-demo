@@ -1,4 +1,4 @@
-#gql-tada-excess-props-demo
+# gql-tada-excess-props-demo
 
 This demo shows how using gql.tada leaves you vulnerable to excess props being sent to the graphql server which becomes runtime errors. Typescript cannot detect these errors due to its structural typing system.
 
