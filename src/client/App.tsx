@@ -1,4 +1,4 @@
-import { graphql, useMutation, useQuery } from "./client";
+import { graphql, useMutation } from "./client";
 
 export function App() {
   const [mutationResult, sendStuff] = useMutation(mutateGQL);
