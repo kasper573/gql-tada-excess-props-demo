@@ -8,7 +8,7 @@ const schema = createSchema({
   typeDefs: fs.readFileSync(path.resolve(__dirname, "schema.graphql"), "utf-8"),
   resolvers: {
     Query: {
-      hello(_, _args, context) {
+      hello(_, _args) {
         return "Hello World";
       },
     },
