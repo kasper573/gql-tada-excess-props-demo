@@ -1,7 +1,3 @@
-type Query {
-  hello: String
-}
-
 input Input {
   foo: String!
   bar: Int!
